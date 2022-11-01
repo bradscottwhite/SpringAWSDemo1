@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBSaveExpression;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
 import com.amazonaws.services.dynamodbv2.model.ExpectedAttributeValue;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 
@@ -16,10 +17,13 @@ public class EmployeeRepository {
 	@Autowired
 	private DynamoDBMapper dynamoDBMapper;
 
-
 	public Employee save(Employee employee) {
 		dynamoDBMapper.save(employee);
 		return employee;
+	}
+	
+	public Employee getEmployees() {
+		return dynamoDBMapper.load(Employee.class, new DynamoDBScanExpression());
 	}
 
 	public Employee getEmployeeById(String employeeId) {

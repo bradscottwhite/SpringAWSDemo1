@@ -19,6 +19,11 @@ public class EmployeeController {
 		return employeeRepository.save(employee);
 	}
 
+	@GetMapping("/")
+	public Employee getEmployees() {
+		return employeeRepository.getEmployees();
+	}
+
 	@GetMapping("/{id}")
 	public Employee getEmployee(@PathVariable("id") String employeeId) {
 		return employeeRepository.getEmployeeById(employeeId);
