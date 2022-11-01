@@ -1,5 +1,7 @@
 package com.example.controller;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -19,8 +21,8 @@ public class EmployeeController {
 		return employeeRepository.save(employee);
 	}
 
-	@GetMapping("/")
-	public Employee getEmployees() {
+	@GetMapping("s/")
+	public List<Employee> getEmployees() {
 		return employeeRepository.getEmployees();
 	}
 

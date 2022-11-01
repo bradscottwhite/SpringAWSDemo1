@@ -1,5 +1,7 @@
 package com.example.repository;
 
+import java.util.List;
+
 import com.example.entity.Employee;
 
 import org.springframework.stereotype.Repository;
@@ -22,8 +24,8 @@ public class EmployeeRepository {
 		return employee;
 	}
 	
-	public Employee getEmployees() {
-		return dynamoDBMapper.load(Employee.class, new DynamoDBScanExpression());
+	public List<Employee> getEmployees() {
+		return dynamoDBMapper.scan(Employee.class, new DynamoDBScanExpression());
 	}
 
 	public Employee getEmployeeById(String employeeId) {
